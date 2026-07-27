@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Константин Иванович Белоусов — К 100-летию со дня рождения</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #FFFFFF;
+      --black: #111111;
+      --gold: #C5A55A;
+      --gold-light: #D4BA78;
+      --light: #F8F8F8;
+      --gray: #888888;
+      --light-gray: #E8E8E8;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--light-gray);
+      padding: 0 48px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav .nav-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 48px 80px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 400;
+      line-height: 1.2;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 48px;
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .hero-meta span {
+      color: var(--black);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeUpDown 2s ease-in-out infinite;
+    }
+
+    .scroll-hint .arrow {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    @keyframes fadeUpDown {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 120px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .about h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    .about p {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 2;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 60px auto;
+    }
+
+    /* GALLERY */
+    .gallery-section {
+      padding: 80px 48px 120px;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .gallery-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .gallery-header p {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--light);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay .painting-year {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .overlay .painting-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .overlay .painting-desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 28px;
+      cursor: pointer;
+      padding: 8px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
+    .lightbox-content {
+      display: flex;
+      gap: 48px;
+      max-width: 1200px;
+      max-height: 80vh;
+      align-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 60%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lightbox-info {
+      flex: 1;
+      color: var(--white);
+    }
+
+    .lightbox-info .lb-year {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .lightbox-info .lb-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .lightbox-info .lb-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .lightbox-info .lb-desc {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .lightbox-info .lb-author {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: border-color 0.3s;
+    }
+
+    .lightbox-nav:hover {
+      border-color: var(--gold);
+    }
+
+    .lightbox-nav.prev { left: 24px; }
+    .lightbox-nav.next { right: 24px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--light-gray);
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    footer .footer-text {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 2;
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+
+    footer .footer-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 32px auto;
+    }
+
+    footer .footer-copy {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .hero {
+        padding: 100px 24px 60px;
+      }
+
+      .about,
+      .gallery-section {
+        padding: 80px 24px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+      }
+
+      .lightbox-content {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .lightbox-image {
+        max-width: 90%;
+        max-height: 50vh;
+      }
+
+      footer {
+        padding: 60px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Белоусов К.И.</div>
+    <div class="nav-links">
+      <a href="#about">О художнике</a>
+      <a href="#gallery">Галерея</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Музей истории ВМЗ · Выставка к 100-летию</div>
+    <h1>Константин Иванович <em>Белоусов</em></h1>
+    <div class="hero-line"></div>
+    <p class="hero-subtitle">
+      Картины, которые передают знакомые и любимые уголки родной Выксы,
+      удивительные состояния природы и особое видение мира художника.
+    </p>
+    <div class="hero-meta">
+      Выставка работает ежедневно <span>до конца сентября</span> · Вход свободный
+    </div>
+    <div class="scroll-hint">
+      <span>Вниз</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-label">О художнике</div>
+    <h2>Связавший свою жизнь с Выксой</h2>
+    <p>
+      Константин Иванович Белоусов родился в Харькове, но свою жизнь и творчество
+      связал с городом Выксой. Его работы — это настоящие шедевры, в которых
+      чувствуется глубокая любовь к городу и его окрестностям.
+    </p>
+    <p>
+      На выставке представлены лучшие работы художника, входящие в фонд
+      Музея истории ВМЗ. Каждая картина — это возможность прикоснуться
+      к уникальному видению мастера.
+    </p>
+    <div class="divider"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-header">
+      <div class="section-label">Коллекция</div>
+      <h2>Работы из фонда музея</h2>
+      <p>28 произведений · Нажмите на работу для подробностей</p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lbClose">&times;</button>
+    <button class="lightbox-nav prev" id="lbPrev">&#8592;</button>
+    <button class="lightbox-nav next" id="lbNext">&#8594;</button>
+    <div class="lightbox-content">
+      <img class="lightbox-image" id="lbImage" src="" alt="">
+      <div class="lightbox-info">
+        <div class="lb-year" id="lbYear"></div>
+        <div class="lb-title" id="lbTitle"></div>
+        <div class="lb-line"></div>
+        <div class="lb-desc" id="lbDesc"></div>
+        <div class="lb-author">Константин Иванович Белоусов</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Белоусов К.И.</div>
+    <div class="footer-text">
+      Музей истории ВМЗ<br>
+      Выставка к 100-летию со дня рождения<br>
+      Выкса · Ежедневно до конца сентября
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-copy">Вход свободный</div>
+  </footer>
+
+  <script>
+    // Paintings data — test placeholders
+    const paintings = [
+      { file: '2026-07-27 21.20.47.jpg', title: 'Весенний рассвет', year: '1978', desc: 'Утренний свет над Выксой. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.01.jpeg', title: 'Окрестности Выксы', year: '1982', desc: 'Пейзаж окрестностей города. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.05.jpeg', title: 'Река в полдень', year: '1975', desc: 'Летний день на реке. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.06.jpeg', title: 'Золотая осень', year: '1980', desc: 'Осенние краски подмосковного леса. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.08.jpeg', title: 'Зимний пейзаж', year: '1976', desc: 'Зима в Выксе. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.09.jpeg', title: 'Старый парк', year: '1984', desc: 'Аллея городского парка. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.10.jpeg', title: 'На берегу пруда', year: '1979', desc: 'Тихий вечер у воды. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.11.jpeg', title: 'Цветущий сад', year: '1981', desc: 'Весенние яблони в цвету. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.13.jpeg', title: 'Дорога к городу', year: '1977', desc: 'Подъезд к Выксе. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.14.jpeg', title: 'Летний день', year: '1983', desc: 'Поле в разгар лета. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.18.jpeg', title: 'Туманное утро', year: '1985', desc: 'Утренний туман над долиной. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.20.jpeg', title: 'Вечерний свет', year: '1974', desc: 'Закат над городом. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.21.jpeg', title: 'Берёзовая роща', year: '1986', desc: 'Берёзы у дороги. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.22.jpeg', title: 'Первый снег', year: '1982', desc: 'Ноябрьская пора. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.27.jpeg', title: 'Улица города', year: '1979', desc: 'Городской мотив. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.29.jpeg', title: 'Полевые цветы', year: '1984', desc: 'Луговые цветы в вазе. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.35.jpeg', title: 'Осенний лес', year: '1978', desc: 'Лесная тропинка осенью. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.37.jpeg', title: 'Зимний вечер', year: '1981', desc: 'Сумерки зимой. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.38.jpeg', title: 'Весенний ручей', year: '1976', desc: 'Талые воды. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.40.jpeg', title: 'Летний пейзаж', year: '1983', desc: 'Панорама окрестностей. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.42.jpeg', title: 'Сумерки', year: '1980', desc: 'Время между днём и ночью. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.55.jpeg', title: 'У воды', year: '1977', desc: 'Тихий пруд. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.56.jpeg', title: 'Мартовское солнце', year: '1985', desc: 'Конец зимы. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.58.jpeg', title: 'Лесная поляна', year: '1975', desc: 'Солнечная поляна. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.21.59.jpeg', title: 'Речной берег', year: '1982', desc: 'Берег реки летом. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.22.05.jpeg', title: 'Дали', year: '1979', desc: 'Просторы родной земли. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.22.06.jpeg', title: 'Последний луч', year: '1986', desc: 'Закатный свет. Холст, масло.' },
+      { file: 'photo_2026-07-27 21.22.08.jpeg', title: 'Тишина', year: '1984', desc: 'Безветренный день. Холст, масло.' }
+    ];
+
+    const grid = document.getElementById('galleryGrid');
+    const lightbox = document.getElementById('lightbox');
+    let currentIndex = 0;
+
+    // Build gallery
+    paintings.forEach((p, i) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.innerHTML = `
+        <img src="src/picture/${encodeURIComponent(p.file)}" alt="${p.title}" loading="lazy">
+        <div class="overlay">
+          <div class="painting-year">${p.year}</div>
+          <div class="painting-title">${p.title}</div>
+          <div class="painting-desc">${p.desc}</div>
+        </div>
+      `;
+      item.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(item);
+    });
+
+    // Lightbox
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+      const p = paintings[currentIndex];
+      document.getElementById('lbImage').src = `src/picture/${encodeURIComponent(p.file)}`;
+      document.getElementById('lbImage').alt = p.title;
+      document.getElementById('lbYear').textContent = p.year;
+      document.getElementById('lbTitle').textContent = p.title;
+      document.getElementById('lbDesc').textContent = p.desc;
+    }
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + paintings.length) % paintings.length;
+      updateLightbox();
+    });
+    document.getElementById('lbNext').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % paintings.length;
+      updateLightbox();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + paintings.length) % paintings.length;
+        updateLightbox();
+      }
+      if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % paintings.length;
+        updateLightbox();
+      }
+    });
+  </script>
+
+</body>
+</html>
